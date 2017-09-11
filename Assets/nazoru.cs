@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class nazoru : MonoBehaviour {
 	GameObject linePrefab;
-	public GameObject Prefab;
-	public GameObject Prefab2;
+	public GameObject[] Prefab;
 	public float lineLength = 0.2f;
 	public float lineWidth = 0.1f;
+	public int Prefabnumber;
 
 	private Vector3 touchPos;
 
 	// Use this for initialization
 	void Start () {
-		linePrefab = Prefab;
+		linePrefab = Prefab[0];
+		Prefabnumber = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown (1)) {
-			if (linePrefab == Prefab) {
-				linePrefab = Prefab2;
-			} else {
-				linePrefab = Prefab;
-			}
+			Prefabnumber++;
+			if (Prefabnumber >= Prefab.Length)
+				Prefabnumber = 0;
+			linePrefab = Prefab [Prefabnumber];
 		}
 		if(Input.GetMouseButtonDown(0))
 		{
