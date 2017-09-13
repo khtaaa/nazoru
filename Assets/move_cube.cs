@@ -13,25 +13,26 @@ public class move_cube : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (ok == true)
 			transform.position = new Vector3 (start.x, transform.position.y - 0.01f, start.z);
 		if (transform.position.y <= start.y-4) {
 			transform.position = start;
 		}
+
+		ok = true;
 	}
-	/*
 	//オブジェクトが衝突したとき
-	void OnCollisionEnter(Collision col) {
-		if (col.gameObject.CompareTag ("line")) {
+	void OnTriggerEnter(Collider col) {
+		if (col.CompareTag ("line")) {
 			ok = false;
 		}
 	}
 
 	//オブジェクトが離れた時
-	void OnCollisionExit(Collision col) {
-		if (col.gameObject.CompareTag ("line")) {
-			ok = true;
+	void OnTriggerStay(Collider col) {
+		if (col.CompareTag ("line")) {
+			ok = false;
 		}
-	}*/
+	}
 }
