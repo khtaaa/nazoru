@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy : MonoBehaviour {
+public class clear : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,9 +15,10 @@ public class enemy : MonoBehaviour {
 	}
 
 	//オブジェクトが衝突したとき
-	void OnCollisionEnter(Collision col) {
-		if (col.gameObject.CompareTag ("Player")) {
-			Destroy(col.gameObject);
+	void OnTriggerEnter(Collider col) {
+		if (col.CompareTag ("Player")) {
+			Application.LoadLevel ("clear");
 		}
 	}
+
 }
